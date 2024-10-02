@@ -9,14 +9,34 @@
     width: 100%;
     font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 0.5em;
-    padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     box-sizing: border-box;
     text-align: left;
 }
 
 .party-checkbox {
+    margin-right: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.candidate-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-bottom: 4px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+.candidate-label {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.candidate-checkbox {
     margin-right: 0.5em;
     width: 1.5em;
     height: 1.5em;
