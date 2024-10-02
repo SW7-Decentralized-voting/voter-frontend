@@ -67,25 +67,26 @@ function App() {
           </label>
           <div className='candidate-list'>
             {partyCandidates[party.id] && partyCandidates[party.id].map((candidate) => (
-              <div className='candidate-contaier'>
-                <div key={candidate.id} className='candidate'>
-                  <label className='candidate-label'>
-                    <input
-                      className='candidate-checkbox'
-                      type='checkbox'
-                      name='candidate'
-                      value={candidate.id}
-                      onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate.id}
-                    />
-                    {candidate.full_name}
-                  </label>
-                </div>
+              <div key={candidate.id} className='candidate'>
+                <label className='candidate-label'>
+                  <input
+                    className='candidate-checkbox'
+                    type='checkbox'
+                    name='candidate'
+                    value={candidate.id}
+                    onChange={handleSelectCandidate}
+                    checked={selectedCandidate === candidate.id}
+                  />
+                  {candidate.full_name}
+                </label>
               </div>
             ))}
           </div>
         </div>
       ))}
+      <button className='submit-button' disabled={!selectedParty && !selectedCandidate}>
+        Stem
+      </button>
     </>
   );
 }
