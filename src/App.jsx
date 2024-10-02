@@ -4,7 +4,7 @@ import './App.css'
 import './VotingPage.css'
 
 function App() {
-  const [selectedParty, setSelectedParty] = useState('');
+  const [selectedParty, setSelectedParty] = useState(null);
   const [parties, setParties] = useState([]);
   const [partyCandidates, setPartyCandidates] = useState([]);
 
@@ -30,20 +30,28 @@ function App() {
   }, []);
 
   const handleSelectParty = (event) => {
-    setSelectedParty(event.target.value);
-    console.log(event.target.value);
+    const partyId = Number(event.target.value);
+    setSelectedParty(partyId === selectedParty ? null : partyId);
+    console.log('Selected party:', partyId);
   };
 
   return (
     <>
     <h1> Folketingsvalget 20xx</h1>
     {parties.map((party) => (
-    <div className='party-container' key={party.id}> 
-      <label className='party-label'>
-        <input className='party-checkbox' type='checkbox' name='party' value={party.id} onChange={handleSelectParty} />
-        {party.partyName}
-      </label>
-    </div>
+      <div className='party-container' key={party.id}> 
+        <label className='party-label'>
+          <input 
+            className='party-checkbox' 
+            type='checkbox' 
+            name='party' 
+            value={party.id} 
+            onChange={handleSelectParty} 
+            checked={selectedParty === party.id}
+            />
+          {party.partyName}
+        </label>
+      </div>
     
     ))}
     </>
