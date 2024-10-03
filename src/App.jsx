@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getPartyCandidates, getParties } from './API/votingAPI'
+import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/votingAPI'
 import './App.css'
 import './VotingPage.css'
 
@@ -48,6 +48,16 @@ function App() {
     setSelectedParty(null);
     console.log('Selected candidate:', candidateId);
   };
+  
+  const handleCastVote = async () => {
+    if (selectedParty) {
+      await voteForParty(selectedParty);
+    } else if (selectedCandidate) {
+      await voteForCandidate(selectedCandidate);
+    } else {
+      voteBlank();
+    }
+  };
 
   return (
     <>
@@ -84,7 +94,7 @@ function App() {
           </div>
         </div>
       ))}
-      <button className='submit-button' disabled={!selectedParty && !selectedCandidate}>
+      <button className='submit-button' disabled={!selectedParty && !selectedCandidate} onClick={handleCastVote}>
         Stem
       </button>
     </>
