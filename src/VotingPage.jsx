@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState} from 'react';
-import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/votingAPI';
+import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/VotingAPI';
 import './VotingPage.css';
 
 function VotingPage() {
