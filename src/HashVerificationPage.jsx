@@ -1,4 +1,4 @@
-import "./HashVerificationPage.css"
+import './HashVerificationPage.css';
 
 function HashVerificationPage() {
     return (

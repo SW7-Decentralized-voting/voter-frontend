@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState} from 'react'
-import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/votingAPI'
-import './VotingPage.css'
+import { useEffect, useRef, useState} from 'react';
+import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/votingAPI';
+import './VotingPage.css';
 
 function VotingPage() {
     const [parties, setParties] = useState([]);
@@ -32,7 +32,7 @@ function VotingPage() {
           console.log('Candidates for party', party.id, candidates);
         }
         setPartyCandidates(candidatesData);
-        hasFetchedData.current = true
+        hasFetchedData.current = true;
       };
     
       fetchData();

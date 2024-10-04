@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import VotingPage from './VotingPage'
-import HashVerificationPage from './HashVerificationPage'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import VotingPage from './VotingPage';
+import HashVerificationPage from './HashVerificationPage';
+import './App.css';
 
 
 function App() {
