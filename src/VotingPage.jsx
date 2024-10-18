@@ -64,7 +64,10 @@ function VotingPage() {
   
     return (
       <>
-        <h1>Folketingsvalget 20xx</h1>
+        <div className="header">
+          <h1>Folketingsvalget 20xx</h1>
+          <div className="upper-right-text">Opstillingskreds</div>
+        </div>
         <h3>Sæt X i rubrikken til venstre for et partinavn eller et kandidatnavn.</h3>
         <p>Du kan kun sætte ét X på stemmesedlen.</p>
         {parties.length === 0 && <p>Indlæser...</p>}
