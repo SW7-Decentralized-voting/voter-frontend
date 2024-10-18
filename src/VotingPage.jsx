@@ -39,14 +39,14 @@ function VotingPage() {
     }, []);
   
     const handleSelectParty = (event) => {
-      const partyId = Number(event.target.value);
+      const partyId = event.target.value;
       setSelectedParty(partyId === selectedParty ? null : partyId);
       setSelectedCandidate(null);
       console.log('Selected party:', partyId);
     };
   
     const handleSelectCandidate = (event) => {
-      const candidateId = Number(event.target.value);
+      const candidateId = event.target.value;
       setSelectedCandidate(candidateId === selectedCandidate ? null : candidateId);
       setSelectedParty(null);
       console.log('Selected candidate:', candidateId);
