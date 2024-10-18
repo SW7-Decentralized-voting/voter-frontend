@@ -27,9 +27,9 @@ function VotingPage() {
         
         const candidatesData = {};
         for (const party of fetchedParties) {
-          const candidates = await fetchPartyCandidates(party.id);
-          candidatesData[party.id] = candidates;
-          console.log('Candidates for party', party.id, candidates);
+          const candidates = await fetchPartyCandidates(party._id);
+          candidatesData[party._id] = candidates;
+          console.log('Candidates for party', party._id, candidates);
         }
         setPartyCandidates(candidatesData);
         hasFetchedData.current = true;
@@ -69,31 +69,31 @@ function VotingPage() {
         <p>Du kan kun sætte ét X på stemmesedlen.</p>
         {parties.length === 0 && <p>Indlæser...</p>}
         {parties.map((party) => (
-          <div className='party-container' key={party.id}>
+          <div className='party-container' key={party._id}>
             <label className='party-label'>
               <input
                 className='party-checkbox'
                 type='checkbox'
                 name='party'
-                value={party.id}
+                value={party._id}
                 onChange={handleSelectParty}
-                checked={selectedParty === party.id}
+                checked={selectedParty === party._id}
               />
-              {party.partyName}
+              {party.name}
             </label>
             <div className='candidate-list'>
-              {partyCandidates[party.id] && partyCandidates[party.id].map((candidate) => (
-                <div key={candidate.id} className='candidate'>
+              {partyCandidates[party._id] && partyCandidates[party._id].map((candidate) => (
+                <div key={candidate._id} className='candidate'>
                   <label className='candidate-label'>
                     <input
                       className='candidate-checkbox'
                       type='checkbox'
                       name='candidate'
-                      value={candidate.id}
+                      value={candidate._id}
                       onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate.id}
+                      checked={selectedCandidate === candidate._id}
                     />
-                    {candidate.full_name}
+                    {candidate.name}
                   </label>
                 </div>
               ))}

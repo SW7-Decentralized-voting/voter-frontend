@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 const getPartyCandidates = async (partyId) => {
-    const response = await api.get('/candidates?partyId=' + partyId);
+    const response = await api.get('/candidates?party=' + partyId);
     return response.data;
 };
 
