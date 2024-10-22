@@ -1,3 +1,5 @@
+import candidates from '../fixtures/candidatesAll.json';
+
 describe('Voting Page Layout', () => {
 	const apiBaseUrl = Cypress.env('BACKEND_URL');
 	beforeEach(() => {
@@ -26,9 +28,7 @@ describe('Voting Page Layout', () => {
 		});
 	});
 
-	it('should display the candidates for each party', async () => {
-		const candidates = await cy.fixture('candidatesAll.json');
-
+	it('should display the candidates for each party', () => {
 		cy.visit('/voting');
 		cy.get('div .candidate-list').as('candidates');
 		cy.get('@candidates').each((candidateList, index) => {

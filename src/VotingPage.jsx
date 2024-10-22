@@ -22,14 +22,12 @@ function VotingPage() {
     useEffect(() => {
       const fetchData = async () => {
         const fetchedParties = await fetchParties();
-        console.log('Parties:', fetchedParties);
         setParties(fetchedParties);
         
         const candidatesData = {};
         for (const party of fetchedParties) {
           const candidates = await fetchPartyCandidates(party._id);
           candidatesData[party._id] = candidates;
-          console.log('Candidates for party', party._id, candidates);
         }
         setPartyCandidates(candidatesData);
         hasFetchedData.current = true;
@@ -42,6 +40,7 @@ function VotingPage() {
       const partyId = event.target.value;
       setSelectedParty(partyId === selectedParty ? null : partyId);
       setSelectedCandidate(null);
+      // eslint-disable-next-line no-console
       console.log('Selected party:', partyId);
     };
   
@@ -49,6 +48,7 @@ function VotingPage() {
       const candidateId = event.target.value;
       setSelectedCandidate(candidateId === selectedCandidate ? null : candidateId);
       setSelectedParty(null);
+      // eslint-disable-next-line no-console
       console.log('Selected candidate:', candidateId);
     };
     
