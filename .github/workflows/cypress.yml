@@ -40,8 +40,7 @@ jobs:
           ENVIRONMENT: "github"
 
       - name: Upload Cypress Screenshots
-        if: failure()  # Only upload if the tests fail
         uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: cypress/screenshots-saves
