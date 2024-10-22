@@ -20,7 +20,6 @@ describe('Voting Page Layout', () => {
 	it('should display the parties', () => {
 		const parties = ['Nordlisten', 'Sydlisten', 'Østpartiet', 'Vestpartiet', 'Uden for partierne'];
 		cy.visit('/voting');
-		cy.wait('@getParties');
 		cy.get('div .party-container').should('have.length', 5).as('parties');
 		cy.get('@parties').each((party, index) => {
 			cy.wrap(party).children().eq(0).should('have.text', parties[index]);
