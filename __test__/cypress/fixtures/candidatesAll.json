@@ -1,0 +1,97 @@
+[
+	{
+		"name": "Bettina Bendtsen",
+		"party": 1,
+		"nominationDistrict": "District 1"
+	}, 
+	{
+		"name": "Fanny Findsen",
+		"party": 1,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Henrik Hansen",
+		"party": 1,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Mette Madsen",
+		"party": 1,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Ole Olsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Sidsel Svendsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Jens Jørgensen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Frederik Frandsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Anette Andersen",
+		"party": 3,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Tina Troelsen",
+		"party": 3,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Lars Larsen",
+		"party": 4,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Hans Hansen",
+		"party": 4,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Ulla Ullasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Ib Ibsen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Pia Piasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Jesper Jespersen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Mia Miasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Morten Mortensen",
+		"party": 5,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Kurt Kurtensen",
+		"party": 5,
+		"nominationDistrict": "District 2"
+	}
+]
