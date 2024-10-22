@@ -36,5 +36,5 @@ jobs:
           record: false 
           parallel: false # Runs test in parallel using settings above¨
         env:
-          BACKEND_URL: "http://localhost:3002"
+          BACKEND_URL: "http://localhost:3002/api/v1"
           ENVIRONMENT: "github"
