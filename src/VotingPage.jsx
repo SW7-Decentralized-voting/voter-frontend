@@ -71,7 +71,7 @@ function VotingPage() {
         <h3>Sæt X i rubrikken til venstre for et partinavn eller et kandidatnavn.</h3>
         <p>Du kan kun sætte ét X på stemmesedlen.</p>
         {parties.length === 0 && <p>Indlæser...</p>}
-        {parties.length && parties.map((party) => (
+        {parties.length && Array.isArray(parties) && parties.map((party) => (
           <div className='party-container' key={party._id}>
             <label className='party-label'>
               <input

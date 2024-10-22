@@ -30,12 +30,9 @@ describe('Voting Page Layout', () => {
 	it('should display the candidates for each party', async () => {
 		const candidates = await cy.fixture('candidatesAll.json');
 
-		console.log('Candidates (cypress):', candidates);
-
 		cy.visit('/voting');
 		cy.get('div .candidate-list').as('candidates');
 		cy.get('@candidates').each((candidateList, index) => {
-			Cypress.log(candidateList)
 			cy.wrap(candidateList).children().should('have.length', candidates.filter((candidate) => candidate.party === index + 1).length);
 		});
 	});
