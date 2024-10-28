@@ -2,14 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import VotingPage from './Screens/VotingPage';
 import HashVerificationPage from './Screens/HashVerificationPage';
 import VerifyKeyPage from './Screens/VerifyKeyPage';
+import ProtectedRoute from './utils/ProtectedRoute';
 import './App.css';
-
-// Protected route component
-function ProtectedRoute({ element }) {
-  // Check if the user is verified
-  const isVerified = sessionStorage.getItem('verified') === 'true';
-  return isVerified ? element : <Navigate to="/login" />;
-}
 
 function App() {
   return (
