@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from './API/VotingAPI';
+import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from '../API/VotingAPI';
 import './VotingPage.css';
 
 function VotingPage() {

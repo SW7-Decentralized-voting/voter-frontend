@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import VotingPage from './VotingPage';
-import HashVerificationPage from './HashVerificationPage';
+import VotingPage from './Screens/VotingPage';
+import HashVerificationPage from './Screens/HashVerificationPage';
 import './App.css';
 
 // Protected route component
