@@ -65,7 +65,7 @@ function VotingPage() {
       setSelectedParty(null);
       setSelectedCandidate(null);
       sessionStorage.setItem('verified', 'false');
-      navigate('/verify');
+      navigate('/login');
     };
   
     return (

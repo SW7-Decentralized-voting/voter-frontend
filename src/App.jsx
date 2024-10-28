@@ -8,7 +8,7 @@ import './App.css';
 function ProtectedRoute({ element }) {
   // Check if the user is verified
   const isVerified = sessionStorage.getItem('verified') === 'true';
-  return isVerified ? element : <Navigate to="/verify" />;
+  return isVerified ? element : <Navigate to="/login" />;
 }
 
 function App() {
