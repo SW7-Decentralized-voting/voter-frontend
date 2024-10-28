@@ -116,7 +116,6 @@ function VotingPage() {
       ))}
       <button
         className="submit-button"
-        disabled={!selectedParty && !selectedCandidate}
         onClick={handleCastVote}
       >
         Stem
