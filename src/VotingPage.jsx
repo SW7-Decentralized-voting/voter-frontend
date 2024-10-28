@@ -22,14 +22,12 @@ function VotingPage() {
     useEffect(() => {
       const fetchData = async () => {
         const fetchedParties = await fetchParties();
-        console.log('Parties:', fetchedParties);
         setParties(fetchedParties);
         
         const candidatesData = {};
         for (const party of fetchedParties) {
           const candidates = await fetchPartyCandidates(party._id);
           candidatesData[party._id] = candidates;
-          console.log('Candidates for party', party._id, candidates);
         }
         setPartyCandidates(candidatesData);
         hasFetchedData.current = true;
@@ -42,6 +40,7 @@ function VotingPage() {
       const partyId = event.target.value;
       setSelectedParty(partyId === selectedParty ? null : partyId);
       setSelectedCandidate(null);
+      // eslint-disable-next-line no-console
       console.log('Selected party:', partyId);
     };
   
@@ -49,6 +48,7 @@ function VotingPage() {
       const candidateId = event.target.value;
       setSelectedCandidate(candidateId === selectedCandidate ? null : candidateId);
       setSelectedParty(null);
+      // eslint-disable-next-line no-console
       console.log('Selected candidate:', candidateId);
     };
     
@@ -71,7 +71,7 @@ function VotingPage() {
         <h3>Sæt X i rubrikken til venstre for et partinavn eller et kandidatnavn.</h3>
         <p>Du kan kun sætte ét X på stemmesedlen.</p>
         {parties.length === 0 && <p>Indlæser...</p>}
-        {parties.map((party) => (
+        {parties.length && Array.isArray(parties) && parties.map((party) => (
           <div className='party-container' key={party._id}>
             <label className='party-label'>
               <input
