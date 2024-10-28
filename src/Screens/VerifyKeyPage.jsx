@@ -20,15 +20,15 @@ function VerifyKeyPage() {
             navigate('/voting');
         } else {
             // Display error if verification fails
-            setError('Invalid hash. Please try again.');
+            setError('Forkert nøgle, prøv venligst igen.');
         }
     };
 
     return (
       <>
         <div>
-            <h1>Enter key</h1>
-            <p>Enter the key you received below.</p>
+            <h1>Indtast nøgle</h1>
+            <p>Indtast nøglen som de har modtaget ved skranken.</p>
             <input 
                 className="hash-field" 
                 type="text" 
@@ -41,10 +41,10 @@ function VerifyKeyPage() {
                     }
                 }}
             />
-            <button onClick={handleVerification}>Login</button>
+            <button onClick={handleVerification}>Log ind</button>
             {error && <p className="error-message">{error}</p>}
         </div>
-        <button className='verify-button' onClick={() => navigate('/verify')}>Verify your vote</button>
+        <button className='verify-button' onClick={() => navigate('/verify')}>Verificer din stemme</button>
       </>
     );
 }
