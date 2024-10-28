@@ -1,7 +1,7 @@
-import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import VotingPage from './Screens/VotingPage';
 import HashVerificationPage from './Screens/HashVerificationPage';
+import VerifyKeyPage from './Screens/VerifyKeyPage';
 import './App.css';
 
 // Protected route component
@@ -12,20 +12,11 @@ function ProtectedRoute({ element }) {
 }
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    // Redirect to /verify if accessing root path
-    if (location.pathname === '/') {
-      navigate('/verify');
-    }
-  }, [location, navigate]);
-
   return (
     <>
       <Routes>
-        {/* Use ProtectedRoute for /voting path */}
+        <Route path='/' element={<Navigate to='/login' />} />
+        <Route path="/login" element={<VerifyKeyPage />} />
         <Route path="/voting" element={<ProtectedRoute element={<VotingPage />} />} />
         <Route path="/verify" element={<HashVerificationPage />} />
       </Routes>
