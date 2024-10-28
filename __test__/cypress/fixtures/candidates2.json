@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Ole Olsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Sidsel Svendsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Jens Jørgensen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Frederik Frandsen",
+		"party": 2,
+		"nominationDistrict": "District 2"
+	}
+]
