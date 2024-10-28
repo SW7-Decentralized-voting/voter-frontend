@@ -26,13 +26,13 @@ function VerifyKeyPage() {
 
     return (
       <>
-        <div>
+        <div className='verify-key-page-div'>
             <h1>Indtast nøgle</h1>
             <p>Indtast nøglen som de har modtaget ved skranken.</p>
             <input 
-                className="hash-field" 
+                className="key-input" 
                 type="text" 
-                placeholder="Enter your key here" 
+                placeholder="Indtast din nøgle her" 
                 value={hash} 
                 onChange={(e) => setHash(e.target.value)}
                 onKeyDown={(e) => {
@@ -41,7 +41,7 @@ function VerifyKeyPage() {
                     }
                 }}
             />
-            <button onClick={handleVerification}>Log ind</button>
+            <button className="key-button" onClick={handleVerification}>Log ind</button>
             {error && <p className="error-message">{error}</p>}
         </div>
         <button className='verify-button' onClick={() => navigate('/verify')}>Verificer din stemme</button>
