@@ -1,6 +1,5 @@
 version: '3.4'
 
-name: decentralized-voting
 services:
   frontend:
     image: frontend
