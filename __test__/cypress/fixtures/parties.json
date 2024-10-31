@@ -1,0 +1,27 @@
+[
+	{
+		"_id": 1,
+		"name": "Nordlisten",
+		"list": "G"
+	},
+	{
+		"_id": 2,
+		"name": "Sydlisten",
+		"list": "H"
+	},
+	{
+		"_id": 3,
+		"name": "Østpartiet",
+		"list": "R"
+	},
+	{
+		"_id": 4,
+		"name": "Vestpartiet",
+		"list": "T"
+	},
+	{
+		"_id": 5,
+		"name": "Uden for partierne",
+		"list": "U"
+	}
+]
