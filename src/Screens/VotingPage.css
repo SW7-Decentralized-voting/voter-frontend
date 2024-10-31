@@ -9,64 +9,81 @@
     right: 0;
     padding: 10px;
     background-color: #fff;
-    
     border-radius: 4px;
     font-size: 1em;
     color: #333;
   }
-
-.party-container {
+  
+  .text-size-button {
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #0bce2f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .text-size-button:hover {
+    background-color: #005a9e;
+  }
+  
+  .party-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-}
-
-.party-label {
+  }
+  
+  .party-label {
     width: 100%;
     font-size: 1.5em;
     font-weight: bold;
     border-bottom: 3px solid black;
     box-sizing: border-box;
     text-align: left;
-}
-
-.party-checkbox {
+  }
+  
+  .party-checkbox {
     margin-right: 0.5em;
     width: 1.5em;
     height: 1.5em;
-}
-
-.candidate-list {
+  }
+  
+  .candidate-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
     border-bottom: 6px solid black;
     box-sizing: border-box;
-
-}
-
-.candidate-label {
+  }
+  
+  .candidate-label {
     width: 100%;
     font-size: 1.2em;
     text-align: left;
-}
-
-.candidate-checkbox {
+  }
+  
+  .candidate-checkbox {
     margin-right: 0.5em;
     width: 1.5em;
     height: 1.5em;
-}
-
-.submit-button {
+  }
+  
+  .submit-button {
     margin-top: 1em;
     width: 100%;
     height: 3em;
     font-size: 1.5em;
     font-weight: bold;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     cursor: pointer;
-}
+  }
+  
+  .large-text {
+    font-size: 2em !important;
+  }
