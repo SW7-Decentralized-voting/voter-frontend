@@ -28,7 +28,7 @@ function VerifyKeyPage() {
       <>
         <div className='verify-key-page-div'>
             <h1>Indtast nøgle</h1>
-            <p className='enter-key-text'>Indtast nøglen som de har modtaget ved skranken.</p>
+            <p className='enter-key-text'>Indtast nøglen som De har modtaget ved skranken.</p>
             <input 
                 className="key-input" 
                 type="text" 
