@@ -77,7 +77,7 @@ function VotingPage() {
       <h3 className={`${isTextLarge ? 'large-text' : ''}`}>Sæt X i rubrikken til venstre for et partinavn eller et kandidatnavn.</h3>
       <p className={`${isTextLarge ? 'large-text' : ''}`}>Du kan kun sætte ét X på stemmesedlen.</p>
       {(parties?.length ?? 0) === 0 && <p>Indlæser...</p>}
-      {parties.map((party) => (
+      {parties?.map((party) => (
         <div className="party-container" key={party._id}>
           <label className={`party-label ${isTextLarge ? 'large-text' : ''}`}>
             <input
