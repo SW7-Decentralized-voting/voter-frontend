@@ -5,7 +5,7 @@ function enterKey() {
 }
 
 describe('Voting Page Layout', () => {
-	const apiBaseUrl = Cypress.env('BACKEND_URL');
+	// const apiBaseUrl = Cypress.env('BACKEND_URL');
 	beforeEach(() => {
 		cy.visit('/login');
 		enterKey();
