@@ -9,34 +9,50 @@ function VotingPage() {
   const [partyCandidates, setPartyCandidates] = useState({});
   const [selectedParty, setSelectedParty] = useState(null);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
-  const [isTextLarge, setIsTextLarge] = useState(false); // New state variable
+  const [isTextLarge, setIsTextLarge] = useState(false);
   const hasFetchedData = useRef(false);
 
   const fetchParties = async () => {
-    const parties = await getParties();
-    return parties;
+    try {
+      const parties = await getParties();
+      if (!Array.isArray(parties)) throw new Error("Fetched parties data is not an array");
+      return parties;
+    } catch (error) {
+      console.error("Error fetching parties:", error);
+      return [];
+    }
   };
 
   const fetchPartyCandidates = async (partyId) => {
-    const candidates = await getPartyCandidates(partyId);
-    return candidates;
+    try {
+      const candidates = await getPartyCandidates(partyId);
+      if (!Array.isArray(candidates)) throw new Error("Fetched candidates data is not an array");
+      return candidates;
+    } catch (error) {
+      console.error(`Error fetching candidates for party ${partyId}:`, error);
+      return [];
+    }
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedParties = await fetchParties();
-      setParties(fetchedParties);
+      try {
+        const fetchedParties = await fetchParties();
+        setParties(fetchedParties);
 
-      const candidatesData = {};
-      for (const party of fetchedParties) {
-        const candidates = await fetchPartyCandidates(party._id);
-        candidatesData[party._id] = candidates;
+        const candidatesData = {};
+        for (const party of fetchedParties) {
+          const candidates = await fetchPartyCandidates(party._id);
+          candidatesData[party._id] = candidates;
+        }
+        setPartyCandidates(candidatesData);
+        hasFetchedData.current = true;
+      } catch (error) {
+        console.error("Error during data fetch:", error);
       }
-      setPartyCandidates(candidatesData);
-      hasFetchedData.current = true;
     };
 
-    fetchData();
+    if (!hasFetchedData.current) fetchData();
   }, []);
 
   const handleSelectParty = (event) => {
@@ -52,17 +68,21 @@ function VotingPage() {
   };
 
   const handleCastVote = async () => {
-    if (selectedParty) {
-      await voteForParty(selectedParty);
-    } else if (selectedCandidate) {
-      await voteForCandidate(selectedCandidate);
-    } else {
-      voteBlank();
+    try {
+      if (selectedParty) {
+        await voteForParty(selectedParty);
+      } else if (selectedCandidate) {
+        await voteForCandidate(selectedCandidate);
+      } else {
+        await voteBlank();
+      }
+      setSelectedParty(null);
+      setSelectedCandidate(null);
+      sessionStorage.setItem('verified', 'false');
+      navigate('/login');
+    } catch (error) {
+      console.error("Error casting vote:", error);
     }
-    setSelectedParty(null);
-    setSelectedCandidate(null);
-    sessionStorage.setItem('verified', 'false');
-    navigate('/login');
   };
 
   return (
@@ -76,8 +96,8 @@ function VotingPage() {
       </button>
       <h3 className={`${isTextLarge ? 'large-text' : ''}`}>Sæt X i rubrikken til venstre for et partinavn eller et kandidatnavn.</h3>
       <p className={`${isTextLarge ? 'large-text' : ''}`}>Du kan kun sætte ét X på stemmesedlen.</p>
-      {(parties?.length ?? 0) === 0 && <p>Indlæser...</p>}
-      {parties?.map((party) => (
+      {parties.length === 0 && <p>Indlæser...</p>}
+      {parties.map((party) => (
         <div className="party-container" key={party._id}>
           <label className={`party-label ${isTextLarge ? 'large-text' : ''}`}>
             <input
