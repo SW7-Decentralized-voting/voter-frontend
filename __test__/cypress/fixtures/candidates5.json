@@ -1,0 +1,37 @@
+[
+	{
+		"name": "Ulla Ullasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Ib Ibsen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Pia Piasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Jesper Jespersen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Mia Miasen",
+		"party": 5,
+		"nominationDistrict": "District 1"
+	},
+	{
+		"name": "Morten Mortensen",
+		"party": 5,
+		"nominationDistrict": "District 2"
+	},
+	{
+		"name": "Kurt Kurtensen",
+		"party": 5,
+		"nominationDistrict": "District 2"
+	}
+]

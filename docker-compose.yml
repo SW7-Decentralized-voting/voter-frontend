@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  frontend:
+    image: frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3001:3001
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: docker
+      MONGO_URI: ${MONGO_URI}
+    ports:
+      - "3002:3002"
