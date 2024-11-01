@@ -15,10 +15,11 @@ function VotingPage() {
   const fetchParties = async () => {
     try {
       const parties = await getParties();
-      if (!Array.isArray(parties)) throw new Error("Fetched parties data is not an array");
+      if (!Array.isArray(parties)) throw new Error('Fetched parties data is not an array');
       return parties;
     } catch (error) {
-      console.error("Error fetching parties:", error);
+      // eslint-disable-next-line no-console
+      console.error('Error fetching parties:', error);
       return [];
     }
   };
@@ -26,9 +27,10 @@ function VotingPage() {
   const fetchPartyCandidates = async (partyId) => {
     try {
       const candidates = await getPartyCandidates(partyId);
-      if (!Array.isArray(candidates)) throw new Error("Fetched candidates data is not an array");
+      if (!Array.isArray(candidates)) throw new Error('Fetched candidates data is not an array');
       return candidates;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(`Error fetching candidates for party ${partyId}:`, error);
       return [];
     }
@@ -48,7 +50,8 @@ function VotingPage() {
         setPartyCandidates(candidatesData);
         hasFetchedData.current = true;
       } catch (error) {
-        console.error("Error during data fetch:", error);
+        // eslint-disable-next-line no-console
+        console.error('Error during data fetch:', error);
       }
     };
 
@@ -81,7 +84,8 @@ function VotingPage() {
       sessionStorage.setItem('verified', 'false');
       navigate('/login');
     } catch (error) {
-      console.error("Error casting vote:", error);
+      // eslint-disable-next-line no-console
+      console.error('Error casting vote:', error);
     }
   };
 
