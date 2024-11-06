@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './VerifyKeyPage.css';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -9,34 +10,49 @@ const api = axios.create({
 
 function VerifyKeyPage() {
     const [hash, setHash] = useState('');
-    const [pid, setPid] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // Mock verification function for example purposes
-    const verifyHash = async (hash, pid) => {
+    const getPid = async () => {
       try {
-          console.log('Hash:', hash);  // Log hash
-          console.log('PID:', pid); 
-          const response = await api.post('/key/verify', { key: hash, id: pid });
+          const response = await api.get('/pollingStations/' + import.meta.env.VITE_PORT);
+          const pid = response.data.pollingStation;
+          return pid;
+      } catch (err) {
+        if (err.response.status === 400) {
+          toast.error('Koden er ugyldig');
+        }
+      }
+    };
+    // Mock verification function for example purposes
+    const verifyHash = async (hash) => {
+      try {
+          const pid = await getPid();
+          const response = await api.post('/key/verify', { key: hash, pollingStation: pid });
           const jwt = response.data;
           
           return jwt;
       } catch (err) {
-          // eslint-disable-next-line no-console
-          console.error('Verification failed:', err);
-          return null;
+          // invalid key hash
+          console.log(err.response.status);
+          if (err.response.status === 401) {
+            toast.error('Forkert nøgle, prøv venligst igen.');
+            console.log(err.response.status + 'hej');
+            return null;
+          } else {
+            // eslint-disable-next-line no-console
+            console.error('Error verifying key:', err);
+            return null;
+          }
       }
   };
 
   const handleVerification = async () => {
-    const jwt = await verifyHash(hash, pid);  // Wait for verification result
+    const jwt = await verifyHash(hash);  // Wait for verification result
 
     if (jwt) {
         // If verified, store JWT in session storage and navigate to the voting page
-        sessionStorage.setItem('verified', 'true');
         sessionStorage.setItem('jwt', jwt);
-
         navigate('/voting');
     } else {
         // Display error if verification fails
@@ -55,18 +71,6 @@ function VerifyKeyPage() {
                 placeholder="Indtast din nøgle her" 
                 value={hash} 
                 onChange={(e) => setHash(e.target.value)}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                        handleVerification();
-                    }
-                }}
-            />
-            <input 
-                className="id-input" 
-                type="text" 
-                placeholder="Indtast valgstedets ID" 
-                value={pid} 
-                onChange={(e) => setPid(e.target.value)}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         handleVerification();
