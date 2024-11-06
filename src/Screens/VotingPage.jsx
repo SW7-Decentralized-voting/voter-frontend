@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from '../API/VotingAPI';
+import { getPartyCandidates, getParties, vote } from '../API/VotingAPI';
 import './VotingPage.css';
 
 function VotingPage() {
@@ -73,11 +73,11 @@ function VotingPage() {
   const handleCastVote = async () => {
     try {
       if (selectedParty) {
-        await voteForParty(selectedParty);
+        await vote(selectedParty);
       } else if (selectedCandidate) {
-        await voteForCandidate(selectedCandidate);
+        await vote(selectedCandidate);
       } else {
-        await voteBlank();
+        await vote(null);
       }
       setSelectedParty(null);
       setSelectedCandidate(null);

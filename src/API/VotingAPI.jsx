@@ -14,19 +14,11 @@ const getParties = async () => {
     return response.data;
 };
 
-const voteForCandidate = async (candidateId) => {
-    const response = await api.post('/vote/candidate', { candidateId });
+const vote = async (id) => {
+    const body = { id: id };
+    const response = await api.post('/vote', body);
     return response.data;
 };
 
-const voteForParty = async (partyId) => {
-    const response = await api.post('/vote/party', { partyId });
-    return response.data;
-};
 
-const voteBlank = async () => {
-    const response = await api.post('/vote/blank');
-    return response.data;
-};
-
-export { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank };
+export { getPartyCandidates, getParties, vote };
