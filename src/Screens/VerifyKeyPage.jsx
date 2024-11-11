@@ -24,20 +24,17 @@ function VerifyKeyPage() {
         }
       }
     };
-    // Mock verification function for example purposes
+    
     const verifyHash = async (hash) => {
       try {
           const pid = await getPid();
           const response = await api.post('/key/verify', { key: hash, pollingStation: pid });
-          const jwt = response.data;
+          const jwt = response.data?.token;
           
           return jwt;
       } catch (err) {
-          // invalid key hash
-          console.log(err.response.status);
           if (err.response.status === 401) {
             toast.error('Forkert nøgle, prøv venligst igen.');
-            console.log(err.response.status + 'hej');
             return null;
           } else {
             // eslint-disable-next-line no-console
@@ -48,14 +45,12 @@ function VerifyKeyPage() {
   };
 
   const handleVerification = async () => {
-    const jwt = await verifyHash(hash);  // Wait for verification result
+    const jwt = await verifyHash(hash);
 
     if (jwt) {
-        // If verified, store JWT in session storage and navigate to the voting page
         sessionStorage.setItem('jwt', jwt);
         navigate('/voting');
     } else {
-        // Display error if verification fails
         setError('Forkert nøgle, prøv venligst igen.');
     }
 };
