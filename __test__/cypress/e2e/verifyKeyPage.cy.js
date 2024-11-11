@@ -8,7 +8,7 @@ describe('VerifyKeyPage Layout', () => {
         pollingStation: '6720c9073b17ad2d0922002e',
         port: 3001
       },
-    })
+    });
   });
   
  
