@@ -4,7 +4,7 @@ describe('Voting Page Layout', () => {
 			win.sessionStorage.setItem('jwt', 'mock-jwt-token');
 		});
 
-    cy.visit('/voting')
+    cy.visit('/voting');
 	});
 
 	it('should correctly display the voting page', () => {
@@ -15,7 +15,7 @@ describe('Voting Page Layout', () => {
 		cy.visit('/voting');
 		cy.get('div .party-container').should('have.length.above', 0).as('parties');
 		cy.get('@parties').each((party) => {
-			cy.wrap(party).children().eq(0).invoke('text').should('match', /.+/)
+			cy.wrap(party).children().eq(0).invoke('text').should('match', /.+/);
 		});
 	});
 
