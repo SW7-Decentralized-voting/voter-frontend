@@ -10,13 +10,14 @@ dotenv.config();
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3001,
+    port: process.env.VITE_PORT || 3000,
   },
   build: {
     outDir: 'dist',
   },
   define: {
     VITE_API_URL: JSON.stringify(process.env.VITE_API_URL),
+    VITE_PORT: JSON.stringify(process.env.VITE_PORT),
   },
   preview: 'http://localhost:3001',
 });

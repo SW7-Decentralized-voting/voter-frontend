@@ -15,6 +15,12 @@ export default defineConfig({
     specPattern: '__test__/cypress/e2e/**/*.cy.js',
     supportFile: '__test__/cypress/support/e2e.js',
   },
+  component: {
+    devserver:{
+      framework: 'react',
+      bundler: 'vite',
+    },
+  },
   env: {
     BACKEND_URL: process.env.VITE_API_URL,
   },
