@@ -16,7 +16,13 @@ const getParties = async () => {
 
 const vote = async (id) => {
     const body = { id: id };
-    const response = await api.post('/vote', body);
+    const response = await api.post('/vote', body, {
+        headers: {
+            Authorization: sessionStorage.getItem('jwt'),
+        }
+    });
+    // eslint-disable-next-line no-console
+    console.log(response.data);
     return response.data;
 };
 
