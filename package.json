@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
     "dev": "npm-run-all --parallel dev:server dev:lint",
     "dev:server": "vite",
     "dev:lint": "nodemon --watch src --exec \"npx eslint .\"",
@@ -14,8 +13,7 @@
     "preview": "vite preview",
     "cy:run": "cypress run",
     "cy:open": "cypress open --e2e --browser chrome --port 52750",
-    "cy:server": "vite --port 2525",
-    "cy:actions": "npm start -- --port 2525"
+    "cy:server": "vite --port 2525"
   },
   "dependencies": {
     "axios": "^1.7.7",

@@ -26,6 +26,3 @@ dist-ssr
 
 **/cypress/downloads
 **/cypress/screenshots
-
-.direnv
-*.envrc
