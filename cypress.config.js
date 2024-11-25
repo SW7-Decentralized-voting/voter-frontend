@@ -24,6 +24,7 @@ export default defineConfig({
   env: {
     BACKEND_URL: process.env.VITE_API_URL,
     BLOCKCHAIN_API: process.env.VITE_BLOCKCHAIN_API_URL,
+    VITE_PORT: process.env.VITE_PORT,
   },
   hosts: {
     'cypress-secure': '127.0.0.1',
