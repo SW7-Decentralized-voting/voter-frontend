@@ -18,8 +18,8 @@ const getParties = async () => {
     return response.data;
 };
 
-const vote = async (id) => {
-    const body = { id: id };
+const vote = async (voteId) => {
+    const body = { voteId: voteId };
     const response = await blockchainApi.post('/vote', body, {
         headers: {
             Authorization: sessionStorage.getItem('jwt'),

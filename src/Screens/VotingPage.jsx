@@ -7,8 +7,7 @@ function VotingPage() {
   const navigate = useNavigate();
   const [parties, setParties] = useState([]);
   const [partyCandidates, setPartyCandidates] = useState({});
-  const [selectedParty, setSelectedParty] = useState(null);
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [choice, setChoice] = useState(null);
   const [isTextLarge, setIsTextLarge] = useState(false);
   const hasFetchedData = useRef(false);
 
@@ -58,29 +57,19 @@ function VotingPage() {
     if (!hasFetchedData.current) fetchData();
   }, []);
 
-  const handleSelectParty = (event) => {
-    const partyId = event.target.value;
-    setSelectedParty(partyId === selectedParty ? null : partyId);
-    setSelectedCandidate(null);
-  };
-
-  const handleSelectCandidate = (event) => {
-    const candidateId = event.target.value;
-    setSelectedCandidate(candidateId === selectedCandidate ? null : candidateId);
-    setSelectedParty(null);
+  const handleSetChoice = (event) => {
+    const voteId = event.target.value;
+    setChoice(voteId === choice ? null : voteId);
   };
 
   const handleCastVote = async () => {
     try {
-      if (selectedParty) {
-        await vote(selectedParty);
-      } else if (selectedCandidate) {
-        await vote(selectedCandidate);
+      if (choice) {
+        await vote(choice);
       } else {
         await vote(null);
       }
-      setSelectedParty(null);
-      setSelectedCandidate(null);
+      setChoice(null);
       sessionStorage.setItem('verified', 'false');
       navigate('/login');
     } catch (error) {
@@ -109,12 +98,12 @@ function VotingPage() {
               type="checkbox"
               name="party"
               value={party._id}
-              onChange={handleSelectParty}
-              checked={selectedParty === party._id}
+              onChange={handleSetChoice}
+              checked={choice === party._id}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  handleSelectParty(e);
-                  selectedParty === party._id ? e.preventDefault() : null;
+                  handleSetChoice(e);
+                  choice === party._id ? e.preventDefault() : null;
                 }
               }}
             />
@@ -130,12 +119,12 @@ function VotingPage() {
                       type="checkbox"
                       name="candidate"
                       value={candidate._id}
-                      onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate._id}
+                      onChange={handleSetChoice}
+                      checked={choice === candidate._id}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                          handleSelectCandidate(e);
-                          selectedCandidate === candidate._id ? e.preventDefault() : null;
+                          handleSetChoice(e);
+                          choice === candidate._id ? e.preventDefault() : null;
                         }
                       }}
                     />
