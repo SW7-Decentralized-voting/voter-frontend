@@ -1,20 +1,24 @@
 [
 	{
+		"_id": "5f5f4b3b7f3b4b001f6f3b4a",
 		"name": "Bettina Bendtsen",
 		"party": "67122e0533de8228a9e48a28",
 		"nominationDistrict": "District 1"
 	}, 
 	{
+		"_id": "5f5f4b3b7f3b4b001f6f3b4b",
 		"name": "Fanny Findsen",
 		"party": "67122e0533de8228a9e48a28",
 		"nominationDistrict": "District 1"
 	},
 	{
+		"_id": "5f5f4b3b7f3b4b001f6f3b4c",
 		"name": "Henrik Hansen",
 		"party": "67122e0533de8228a9e48a28",
 		"nominationDistrict": "District 1"
 	},
 	{
+		"_id": "5f5f4b3b7f3b4b001f6f3b4d",
 		"name": "Mette Madsen",
 		"party": "67122e0533de8228a9e48a28",
 		"nominationDistrict": "District 1"
