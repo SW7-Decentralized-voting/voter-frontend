@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('mockCandidate', () => {
+	cy.fixture('candidates').then((candidates) => {
+		cy.intercept({
+			method: 'GET',
+			url: Cypress.env('BACKEND_URL') + '/candidates?*',
+		}, candidates).as('getCandidates');
+	});
+});
+
+Cypress.Commands.add('mockParties', () => {
+	cy.fixture('parties').then((parties) => {
+		cy.intercept({
+			method: 'GET',
+			url: Cypress.env('BACKEND_URL') + '/parties',
+		}, parties).as('getParties');
+	});
+});

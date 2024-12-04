@@ -4,6 +4,9 @@ describe('Voting Page Layout', () => {
 			win.sessionStorage.setItem('jwt', 'mock-jwt-token');
 		});
 
+		cy.mockCandidate();
+		cy.mockParties();
+
     cy.visit('/voting');
 	});
 
@@ -21,8 +24,14 @@ describe('Voting Page Layout', () => {
 
 	it('should display the candidates for each party', () => {
 		cy.visit('/voting');
-		cy.get('div .candidate-list').as('candidates');
-		cy.get('@candidates').should('have.length.above', 0);
+		cy.wait('@getCandidates');
+		cy.wait('@getCandidates');
+		cy.wait('@getCandidates');
+		cy.wait('@getCandidates');
+		cy.wait('@getCandidates');
+		cy.get('div .candidate-list').each((candidateList) => {
+			cy.wrap(candidateList).children().should('have.length.above', 0);
+		});
 	});
 
   it('should have the correct JWT token in sessionStorage', () => {

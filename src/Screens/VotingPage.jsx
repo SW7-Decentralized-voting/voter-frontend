@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getPartyCandidates, getParties, voteForCandidate, voteForParty, voteBlank } from '../API/VotingAPI';
+import { getPartyCandidates, getParties, vote } from '../API/VotingAPI';
 import './VotingPage.css';
 
 function VotingPage() {
@@ -73,11 +73,11 @@ function VotingPage() {
   const handleCastVote = async () => {
     try {
       if (selectedParty) {
-        await voteForParty(selectedParty);
+        await vote(selectedParty);
       } else if (selectedCandidate) {
-        await voteForCandidate(selectedCandidate);
+        await vote(selectedCandidate);
       } else {
-        await voteBlank();
+        await vote(null);
       }
       setSelectedParty(null);
       setSelectedCandidate(null);
@@ -108,13 +108,13 @@ function VotingPage() {
               className="party-checkbox"
               type="checkbox"
               name="party"
-              value={party._id}
+              value={party.voteId}
               onChange={handleSelectParty}
-              checked={selectedParty === party._id}
+              checked={selectedParty == party.voteId}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   handleSelectParty(e);
-                  selectedParty === party._id ? e.preventDefault() : null;
+                  selectedParty === party.voteId ? e.preventDefault() : null;
                 }
               }}
             />
@@ -129,13 +129,13 @@ function VotingPage() {
                       className="candidate-checkbox"
                       type="checkbox"
                       name="candidate"
-                      value={candidate._id}
+                      value={candidate.voteId}
                       onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate._id}
+                      checked={selectedCandidate == candidate.voteId}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                           handleSelectCandidate(e);
-                          selectedCandidate === candidate._id ? e.preventDefault() : null;
+                          selectedCandidate === candidate.voteId ? e.preventDefault() : null;
                         }
                       }}
                     />
