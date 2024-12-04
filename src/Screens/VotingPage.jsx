@@ -110,7 +110,7 @@ function VotingPage() {
               name="party"
               value={party._id}
               onChange={handleSelectParty}
-              checked={selectedParty === party._id}
+              checked={selectedParty === party.voteId}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   handleSelectParty(e);
@@ -131,7 +131,7 @@ function VotingPage() {
                       name="candidate"
                       value={candidate._id}
                       onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate._id}
+                      checked={selectedCandidate === candidate.voteId}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                           handleSelectCandidate(e);
