@@ -108,13 +108,13 @@ function VotingPage() {
               className="party-checkbox"
               type="checkbox"
               name="party"
-              value={party._id}
+              value={party.voteId}
               onChange={handleSelectParty}
-              checked={selectedParty === party.voteId}
+              checked={selectedParty == party.voteId}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   handleSelectParty(e);
-                  selectedParty === party._id ? e.preventDefault() : null;
+                  selectedParty === party.voteId ? e.preventDefault() : null;
                 }
               }}
             />
@@ -129,13 +129,13 @@ function VotingPage() {
                       className="candidate-checkbox"
                       type="checkbox"
                       name="candidate"
-                      value={candidate._id}
+                      value={candidate.voteId}
                       onChange={handleSelectCandidate}
-                      checked={selectedCandidate === candidate.voteId}
+                      checked={selectedCandidate == candidate.voteId}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                           handleSelectCandidate(e);
-                          selectedCandidate === candidate._id ? e.preventDefault() : null;
+                          selectedCandidate === candidate.voteId ? e.preventDefault() : null;
                         }
                       }}
                     />
