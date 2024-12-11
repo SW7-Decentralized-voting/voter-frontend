@@ -8,6 +8,10 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
+const blockchainApi = axios.create({
+  baseURL: import.meta.env.VITE_BLOCKCHAIN_API_URL,
+});
+
 function VerifyKeyPage() {
     const [hash, setHash] = useState('');
     const [error, setError] = useState('');
@@ -28,12 +32,12 @@ function VerifyKeyPage() {
     const verifyHash = async (hash) => {
       try {
           const pid = await getPid();
-          const response = await api.post('/key/verify', { key: hash, pollingStation: pid });
+          const response = await blockchainApi.post('/keys/verify', { key: hash, pollingStation: pid });
           const jwt = response.data?.token;
           
           return jwt;
       } catch (err) {
-          if (err.response.status === 401) {
+          if (err.response?.status === 401) {
             toast.error('Forkert nøgle, prøv venligst igen.');
             return null;
           } else {

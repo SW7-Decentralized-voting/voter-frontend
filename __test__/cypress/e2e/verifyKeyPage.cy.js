@@ -6,7 +6,7 @@ describe('VerifyKeyPage Layout', () => {
       statusCode: 200,
       body: {
         pollingStation: '6720c9073b17ad2d0922002e',
-        port: 3001
+        port: 3000,
       },
     });
   });
@@ -14,7 +14,7 @@ describe('VerifyKeyPage Layout', () => {
  
   it('should display an error message for an invalid key', () => {
     // Intercept the API request before triggering the action
-    cy.intercept('POST', Cypress.env('BACKEND_URL') + '/key/verify', {
+    cy.intercept('POST', Cypress.env('BLOCKCHAIN_API') + '/keys/verify', {
       statusCode: 401,
       body: {
         error: 'Invalid key'
@@ -31,7 +31,7 @@ describe('VerifyKeyPage Layout', () => {
 
   it('should navigate to the voting page for a valid key', () => {
     // Mock the API response for valid key verification
-    cy.intercept('POST', Cypress.env('BACKEND_URL') + '/key/verify', {
+    cy.intercept('POST', Cypress.env('BLOCKCHAIN_API') + '/keys/verify', {
       statusCode: 200,
       body: { token: 'valid-jwt-token' },
     }).as('verifyValidKey');
