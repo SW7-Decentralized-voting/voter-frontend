@@ -72,13 +72,17 @@ function VotingPage() {
 
   const handleCastVote = async () => {
     try {
+      let response;
       if (selectedParty) {
-        await vote(selectedParty);
+        response = await vote(selectedParty);
       } else if (selectedCandidate) {
-        await vote(selectedCandidate);
+        response = await vote(selectedCandidate);
       } else {
-        await vote(null);
+        response = await vote(null);
       }
+      // eslint-disable-next-line no-console
+      console.log(response);
+      alert(response.transactionHash);
       setSelectedParty(null);
       setSelectedCandidate(null);
       sessionStorage.setItem('verified', 'false');
